@@ -8,6 +8,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
+import { PokemonDataService } from './components/pages/pokemon-data.service';
+import { CardStoreService } from './components/pages/card-store.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,11 @@ import { AppRoutingModule } from './app-routing.module';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [
+    PokemonDataService,
+    CardStoreService
+  ],
+    
   bootstrap: [AppComponent]
 })
 export class AppModule { }
