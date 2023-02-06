@@ -15,20 +15,21 @@ export class CardStoreService {
 
   constructor(private $firestore: Firestore) { }
 
-  private refCollect: CollectionReference = collection(
-    this.$firestore,
-    'pokemons'
-  )
-
-  // addCard(card: PokemonDetail){
-  //   const cardRef = collection(this.firestore, 'cards');
-  //   return addDoc(cardRef,card)
-  // }
+  // private refCollect: CollectionReference = collection(
+  //   this.$firestore,
+  //   'pokemons'
+  // )
 
   addCard(card: PokemonDetail){
-    const cardRef = doc(this.refCollect, String(card.id!));
-    return setDoc(cardRef,card)
+    const cardRef = collection(this.$firestore, 'cards');
+    console.log(cardRef);
+    return addDoc(cardRef,card)
   }
+
+  // addCard(card: PokemonDetail){
+  //   const cardRef = doc(this.refCollect, String(card.id!));
+  //   return setDoc(cardRef,card)
+  // }
 
   //TODO Intentar con los mismos métodos que utilizo en el login para la creación a ver
   //si funciona la firestore
