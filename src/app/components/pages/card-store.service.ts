@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { 
   addDoc, 
   collection, 
+  collectionData, 
   CollectionReference, 
   doc, 
   Firestore, 
   setDoc } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { PokemonDetail } from 'src/app/models/pokemonDetail';
 
 @Injectable({
@@ -22,7 +24,6 @@ export class CardStoreService {
 
   addCard(card: PokemonDetail){
     const cardRef = collection(this.$firestore, 'cards');
-    console.log(cardRef);
     return addDoc(cardRef,card)
   }
 
@@ -33,5 +34,14 @@ export class CardStoreService {
 
   //TODO Intentar con los mismos métodos que utilizo en el login para la creación a ver
   //si funciona la firestore
+
+
+  getCards(): Observable<PokemonDetail[]>{
+    const cardRef = collection(this.$firestore, 'cards');
+    return collectionData(cardRef, { idField: 'id'}) as Observable<PokemonDetail[]>
+  }
+
+
+  
 
 }

@@ -12,7 +12,7 @@ import { PokemonDataService } from '../pokemon-data.service';
 })
 export class MainComponent implements OnInit {
 
-
+  pokemonsInDatabase: PokemonDetail[] = [];
   pokemons: PokemonDetail[] = [];
   
 
@@ -22,17 +22,15 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //TODO PODRÍA HABER UN IF QUE VALIDE SI ESTÁ LA DATA EN FIREBASE Y SI NO HAY NADA QUE
-    //HAGA EL REQUEST Y ENVÍE LOS DATOS A FIREBASE 
-    this.toRunOnceToPopulateFirebaseCards();
-    // this.addCardsToDataBase();
-      //     fetch("https://pokeapi.co/api/v2/pokemon")
-     //     .then(r => {
-    //     console.log(r)
-    //     return r.json();
-    // })
-    // .then(r => console.log(r))
-    // .catch(err => console.error(err));
+    this.cardStoreService.getCards().subscribe(pokemonsDetail => {
+      if(pokemonsDetail.length === 0){
+        this.toRunOnceToPopulateFirebaseCards();
+      }
+      this.pokemonsInDatabase = pokemonsDetail;
+    })
+
+    
+
   }
 
 
@@ -72,19 +70,12 @@ export class MainComponent implements OnInit {
 
 
   addCardsToDataBase(){
-    console.log(this.pokemons);
-    // for(let i = 0; i< this.pokemons.length; i++){
-    //   console.log(this.pokemons[i]);
-    //   const response = this.cardStoreService.addCard(pokemon);
-    // }
     this.pokemons.forEach(pokemon => {
-      console.log(pokemon);
-      const response = this.cardStoreService.addCard(pokemon);
-      console.log(response);
+      for(let i = 0; i<5;i++){
+        this.cardStoreService.addCard(pokemon);
+      }
     });
   }
-
-
 
 
 }
