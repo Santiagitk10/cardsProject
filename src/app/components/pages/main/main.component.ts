@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { PokemonDetail } from 'src/app/models/pokemonDetail';
 import { PokemonList } from 'src/app/models/pokemonList';
 import { CardStoreService } from '../card-store.service';
@@ -26,12 +26,20 @@ export class MainComponent implements OnInit {
     //HAGA EL REQUEST Y ENVÍE LOS DATOS A FIREBASE 
     this.toRunOnceToPopulateFirebaseCards();
     this.addCardsToDataBase();
+      //     fetch("https://pokeapi.co/api/v2/pokemon")
+     //     .then(r => {
+    //     console.log(r)
+    //     return r.json();
+    // })
+    // .then(r => console.log(r))
+    // .catch(err => console.error(err));
   }
 
 
   toRunOnceToPopulateFirebaseCards(){
     this.pokemonDataService.getPokemonShortList()
     .subscribe((list: PokemonList[]) => {
+      console.log(list)
       this.getPokemons(list);
     })
   }
@@ -41,11 +49,23 @@ export class MainComponent implements OnInit {
     const arr: Observable<PokemonDetail>[] = [];
     list.map((value: PokemonList) => {
       arr.push(
-        this.pokemonDataService.getPokemonDetail(value.name)
+        this.pokemonDataService.getPokemonDetail(value.url)
+        .pipe(map(({id, order, name, height, weight , sprites:{front_default}}) => (
+        {
+          id,
+          order,
+          name,
+          height,
+          weight,
+          sprites: {
+            front_default
+          }
+        })))
       );
     });
 
     forkJoin([...arr]).subscribe((pokemons: PokemonDetail[]) => {
+      console.log(pokemons)
       this.pokemons.push(...pokemons);
     })
 

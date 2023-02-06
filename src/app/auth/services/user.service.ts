@@ -20,7 +20,7 @@ export class UserService {
     'users'
   );
 
-
+  //PUEDE QUE NO NECESITE ESTE MÉTODO PORQUE NO VOY A TRABAJAR CON ESTADO ACTIVO DEL USER
   public get currentUser(): User | null {
     return this.$auth.currentUser;
   }

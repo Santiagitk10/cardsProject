@@ -35,8 +35,12 @@ export class PokemonDataService {
   //   return this.http.get<PokemonDetail>(`${this.baseUrl}/pokemon/${pokemon}`);
   // }
 
-  getPokemonDetail(pokemon: string): Observable<PokemonDetail>{
-    return this.http.get<PokemonDetail>(`${this.baseUrl}/${pokemon}`);
+  // getPokemonDetail(pokemon: string): Observable<PokemonDetail>{
+  //   return this.http.get<PokemonDetail>(`${this.baseUrl}/${pokemon}`);
+  // }
+
+  getPokemonDetail(pokemonURL: string): Observable<PokemonDetail>{
+    return this.http.get<PokemonDetail>(`${pokemonURL}`);
   }
 
 

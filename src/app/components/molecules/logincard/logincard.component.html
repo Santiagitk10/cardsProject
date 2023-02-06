@@ -1,7 +1,8 @@
 <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem">
     <div class="card-body">
       <app-title class="card-title text-center" text="Sing in with:"></app-title>
-      <app-button (clickEvent)="click($event)" buttonIconClass="fa-brands fa-google" ></app-button> 
-      <!-- <app-button-icon (clickEvent)="click($event)" class="d-flex justify-content-center"></app-button-icon> -->
+      <div class="d-flex justify-content-center">
+        <app-button (clickEvent)="click($event)" buttonIconClass="fa-brands fa-google" ></app-button> 
+      </div>
     </div>
   </div>
