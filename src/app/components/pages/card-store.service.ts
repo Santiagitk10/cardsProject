@@ -38,10 +38,10 @@ export class CardStoreService {
 
   getCards(): Observable<PokemonDetail[]>{
     const cardRef = collection(this.$firestore, 'cards');
-    return collectionData(cardRef, { idField: 'id'}) as Observable<PokemonDetail[]>
+    return collectionData(cardRef) as Observable<PokemonDetail[]>
   }
 
 
-  
+
 
 }

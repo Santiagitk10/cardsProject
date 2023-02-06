@@ -5,6 +5,7 @@ export interface PokemonDetail {
     height: number;
     weight: number;
     sprites: Sprite;
+    price: number;
 }
 
 

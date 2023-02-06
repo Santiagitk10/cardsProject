@@ -25,11 +25,10 @@ export class MainComponent implements OnInit {
     this.cardStoreService.getCards().subscribe(pokemonsDetail => {
       if(pokemonsDetail.length === 0){
         this.toRunOnceToPopulateFirebaseCards();
+      } else {
+        this.pokemonsInDatabase = pokemonsDetail;
       }
-      this.pokemonsInDatabase = pokemonsDetail;
     })
-
-    
 
   }
 
@@ -56,26 +55,30 @@ export class MainComponent implements OnInit {
           weight,
           sprites: {
             front_default
-          }
+          },
+          price: Math.floor(Math.random() * 100)
         })))
       );
     });
 
     forkJoin([...arr]).subscribe((pokemons: PokemonDetail[]) => {
-      this.pokemons.push(...pokemons);
-      this.addCardsToDataBase();
+        this.pokemons.push(...pokemons);
+        this.addCardsToDataBase();
     })
-
+    
   }
 
 
   addCardsToDataBase(){
-    this.pokemons.forEach(pokemon => {
-      for(let i = 0; i<5;i++){
-        this.cardStoreService.addCard(pokemon);
-      }
-    });
+      this.pokemons.forEach(pokemon => {
+          for(let i=0;i<5;i++){
+            this.cardStoreService.addCard(pokemon);
+          }
+      });
+
+      console.log(this.pokemons);
   }
+
 
 
 }
