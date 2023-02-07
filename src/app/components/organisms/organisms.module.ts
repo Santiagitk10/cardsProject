@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
+import { MoleculesModule } from '../molecules/molecules.module';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    PokemonListComponent
+  ],
+  exports: [
+    PokemonListComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    MoleculesModule
   ]
 })
 export class OrganismsModule { }

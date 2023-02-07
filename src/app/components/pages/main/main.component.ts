@@ -75,8 +75,6 @@ export class MainComponent implements OnInit {
             this.cardStoreService.addCard(pokemon);
           }
       });
-
-      console.log(this.pokemons);
   }
 
 

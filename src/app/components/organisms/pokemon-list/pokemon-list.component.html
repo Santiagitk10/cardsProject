@@ -1,0 +1,17 @@
+
+<h1 class="text-center mt-5 mb-5">Card Store</h1>
+
+<div *ngFor="let card of pokemonsInDatabase" class="d-flex justify-content-center">
+    <app-pokemon-card 
+        class="mb-3" 
+        imageClass="card-img-top" 
+        imageSource={{card.sprites.front_default}}
+        name={{card.name}}
+        price={{card.price}}
+    ></app-pokemon-card>
+</div>
+
+
+
+
+
