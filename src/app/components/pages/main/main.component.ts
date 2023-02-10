@@ -56,7 +56,8 @@ export class MainComponent implements OnInit {
           sprites: {
             front_default
           },
-          price: Math.floor(Math.random() * 100)
+          price: Math.floor(Math.random() * 100),
+          stock : 5
         })))
       );
     });
@@ -71,9 +72,7 @@ export class MainComponent implements OnInit {
 
   addCardsToDataBase(){
       this.pokemons.forEach(pokemon => {
-          for(let i=0;i<5;i++){
             this.cardStoreService.addCard(pokemon);
-          }
       });
   }
 

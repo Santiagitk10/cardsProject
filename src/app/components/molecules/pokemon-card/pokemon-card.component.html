@@ -1,9 +1,12 @@
 <div class="card" style="width: 14rem;">
+    <div class="d-flex justify-content-end">
+      <app-title class="card-title m-2" text="Av : {{stock}}"></app-title>
+    </div>
     <app-image imageClass={{imageClass}} imageSource={{imageSource}}></app-image>
     <div class="card-body">
       <app-title class="card-title" text={{name}}></app-title>
-      <p class="card-text">PRICE:</p>
+      <p class="card-text mb-0">PRICE:</p>
       <app-title class="card-title" text={{price}}></app-title>
-      <a href="#" class="btn btn-primary">Purchase</a>
+      <a href="#" class="btn btn-primary mt-3">Buy</a>
     </div>
   </div>

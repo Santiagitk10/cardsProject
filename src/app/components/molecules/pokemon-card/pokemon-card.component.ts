@@ -11,4 +11,5 @@ export class PokemonCardComponent {
   @Input() imageSource: string = "";
   @Input() name: string = "";
   @Input() price: string = "";
+  @Input() stock: string = "";
 }
