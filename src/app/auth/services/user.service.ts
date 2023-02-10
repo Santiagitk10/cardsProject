@@ -20,7 +20,7 @@ export class UserService {
     'users'
   );
 
-  //PUEDE QUE NO NECESITE ESTE MÉTODO PORQUE NO VOY A TRABAJAR CON ESTADO ACTIVO DEL USER
+  //POR USAR CUANDO COMPRE CARTAS
   public get currentUser(): User | null {
     return this.$auth.currentUser;
   }
