@@ -10,6 +10,7 @@ export class LoginComponent {
 
   constructor(private $auth: AuthService){}
 
+
   login(event: MouseEvent){
     this.$auth.loginGoogle();
   }

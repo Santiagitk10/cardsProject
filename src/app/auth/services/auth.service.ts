@@ -13,11 +13,15 @@ export class AuthService {
   loginGoogle() {
     return signInWithPopup(this.$auth, new GoogleAuthProvider()).then(
       ({ user: { displayName, email, photoURL, uid}}) => {
+        console.log(this.$auth.currentUser);
         this.$user.createUser({
           uid: uid!,
           name: displayName!,
           image: photoURL!,
           email: email!,
+          balance : 0,
+          modifiedDate : 0,
+          cards : []
         });
       }
     )

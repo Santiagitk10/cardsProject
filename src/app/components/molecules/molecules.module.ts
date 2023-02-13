@@ -3,23 +3,28 @@ import { CommonModule } from '@angular/common';
 import { LogincardComponent } from './logincard/logincard.component';
 import { AtomsModule } from '../atoms/atoms.module';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
+import { DepositformComponent } from './depositform/depositform.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     LogincardComponent,
-    PokemonCardComponent
+    PokemonCardComponent,
+    DepositformComponent
   ],
 
   exports: [
     LogincardComponent,
-    PokemonCardComponent
+    PokemonCardComponent,
+    DepositformComponent
   ],
 
   imports: [
     CommonModule,
-    AtomsModule
+    AtomsModule,
+    ReactiveFormsModule
   ]
 })
 export class MoleculesModule { }

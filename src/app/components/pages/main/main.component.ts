@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { getAuth } from '@angular/fire/auth';
 import { forkJoin, map, Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { UserService } from 'src/app/auth/services/user.service';
 import { PokemonDetail } from 'src/app/models/pokemonDetail';
 import { PokemonList } from 'src/app/models/pokemonList';
+import { UserModel } from 'src/app/models/userModel';
 import { CardStoreService } from '../card-store.service';
 import { PokemonDataService } from '../pokemon-data.service';
 
@@ -14,12 +18,16 @@ export class MainComponent implements OnInit {
 
   pokemonsInDatabase: PokemonDetail[] = [];
   pokemons: PokemonDetail[] = [];
-  
+  users: UserModel[] = [];
+  user?: UserModel;
 
-  constructor(private pokemonDataService: PokemonDataService, 
-    private cardStoreService: CardStoreService ){
 
-  }
+  constructor(
+    private pokemonDataService: PokemonDataService,
+    private cardStoreService: CardStoreService,
+    private $userService: UserService
+  )
+  { }
 
   ngOnInit(): void {
     this.cardStoreService.getCards().subscribe(pokemonsDetail => {
@@ -29,6 +37,20 @@ export class MainComponent implements OnInit {
         this.pokemonsInDatabase = pokemonsDetail;
       }
     })
+
+
+    getAuth().onAuthStateChanged(user => {
+      this.$userService.getUserById(user!.uid).subscribe({
+        next: (users) => {
+          this.users = users;
+          this.user = this.users[0];
+          console.log(this.user);
+        }
+      })
+    }
+
+    );
+
 
   }
 
@@ -66,7 +88,7 @@ export class MainComponent implements OnInit {
         this.pokemons.push(...pokemons);
         this.addCardsToDataBase();
     })
-    
+
   }
 
 

@@ -1,1 +1,6 @@
-<button (click)="click($event)" class="border-0  bg-transparent"><i [class]="buttonIconClass"></i>{{text}}</button>
+<button (click)="click($event)"
+class="" [disabled]="isDisabled" type={{buttonType}}>
+<i [class]="buttonIconClass"></i>{{text}}</button>
+
+
+<!-- border-0  bg-transparent -->

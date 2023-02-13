@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() text: string = "";
   @Input() buttonIconClass: string = "";
+  @Input() buttonType: string = "";
+  @Input() isDisabled: boolean = false;
   @Output() clickEvent: EventEmitter<MouseEvent> = new EventEmitter();
 
   click(event: MouseEvent){
