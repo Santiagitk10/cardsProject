@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserModel } from 'src/app/models/userModel';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class UserDashboardComponent {
 
-
+  @Input() currentUser?: UserModel;
   showDepositForm: boolean = false;
 
   clickShowDeposit(){

@@ -21,6 +21,6 @@
     <div *ngIf="frmDeposit.get('amount')?.hasError('max') && frmDeposit.touched">
         No se pueden depositar más de 200 usd diarios
     </div>
-    <app-button buttonType="submit" text="Proceed" disabled="!frmDeposit.valid"></app-button>
-    <app-button (clickEvent)="click($event)" buttonType="button" text="Cancel"></app-button>
+      <app-button buttonType="submit" text="Proceed" [isDisabled]="!frmDeposit.valid" buttonClass="btn btn-success"></app-button>
+      <app-button (clickEvent)="click($event)" buttonType="button" text="Cancel" buttonClass="btn btn-danger"></app-button>
 </form>

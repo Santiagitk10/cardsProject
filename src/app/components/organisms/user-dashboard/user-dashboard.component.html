@@ -1,9 +1,10 @@
-<app-image></app-image>
-<app-title text="Name: Santiago Sierra"></app-title>
-<app-title text="Balance: $ 125"></app-title>
-<app-title text="Cards: 5 "></app-title>
-<app-button (clickEvent)="clickShowDeposit()" buttonType="button" text="Deposit"></app-button>
+<app-image imageSource={{currentUser?.image}} imageClass="roundPic"></app-image>
+<app-title text="Name: {{currentUser?.name}}"></app-title>
+<app-title text="Balance: $ {{currentUser?.balance}}"></app-title>
+<app-title text="Cards: {{currentUser?.cards?.length}} "></app-title>
+<div class="d-flex justify-content-center align-items-center">
+  <app-button (clickEvent)="clickShowDeposit()" buttonType="button" text="Deposit" buttonClass="btn btn-success"></app-button>
+  <app-button buttonType="button"  text="Collection" disabled="false" buttonClass="btn btn-warning"></app-button>
+</div>
 <app-depositform *ngIf="showDepositForm" (clickEvent)="clickHideDeposit()"></app-depositform>
-<app-button buttonType="button"  text="Collection" disabled="false"></app-button>
-
 

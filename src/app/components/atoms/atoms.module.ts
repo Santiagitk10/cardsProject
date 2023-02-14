@@ -6,6 +6,7 @@ import { ImageComponent } from './image/image.component';
 import { LabelComponent } from './label/label.component';
 import { InputComponent } from './input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IconComponent } from './icon/icon.component';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TitleComponent,
     ImageComponent,
     LabelComponent,
-    InputComponent
+    InputComponent,
+    IconComponent
   ],
 
   exports: [
@@ -23,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TitleComponent,
     ImageComponent,
     LabelComponent,
-    InputComponent
+    InputComponent,
+    IconComponent
   ],
 
   imports: [
